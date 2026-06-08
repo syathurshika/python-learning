@@ -1,6 +1,6 @@
 """
 ╔══════════════════════════════════════════════════════════╗
-║         🎓  STUDENT MANAGEMENT SYSTEM  🎓                ║
+║         🎓  STUDENT MANAGEMENT SYSTEM  🎓               ║
 ║         Full-featured academic records manager           ║
 ╚══════════════════════════════════════════════════════════╝
 
