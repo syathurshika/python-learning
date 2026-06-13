@@ -33,7 +33,7 @@ WILD_CARDS = ["Wild", "+4"]
 class Card:
     def __init__(self, color, value):
         self.color = color   # "Red"|"Green"|"Blue"|"Yellow"|"Wild"
-        self.value = value   # e.g. "5", "Skip", "Wild", "Wild Draw Four"
+        self.value = value   # e.g. "5", "Skip", "Wild", "+4"
 
     def __repr__(self):
         return f"{self.color} {self.value}"
@@ -60,7 +60,7 @@ def build_deck() -> list:
             deck.append(Card(color, value))
     for _ in range(4):
         deck.append(Card("Wild", "Wild"))
-        deck.append(Card("Wild", "Wild Draw Four"))
+        deck.append(Card("Wild", "+4"))
     random.shuffle(deck)
     return deck
 
@@ -89,7 +89,7 @@ class Player:
             return None
         color_match = [c for c in playable if c.color == current_color and c.color != "Wild"]
         value_match = [c for c in playable if c.value == top.value and c.color != "Wild"]
-        specials   = [c for c in playable if c.value in ("Skip", "Reverse", "Draw Two")]
+        specials   = [c for c in playable if c.value in ("Skip", "Reverse", "+2", "+4")]
         wilds      = [c for c in playable if c.color == "Wild"]
         for group in (specials, color_match, value_match, wilds):
             if group:
@@ -187,7 +187,7 @@ class UnoGame:
                 self.direction *= -1
         elif card.value == "Skip":
             skip_next = True
-        elif card.value == "Draw Two":
+        elif card.value == "+2":
             self.next_turn()
             next_p = self.current_player
             self.draw_card(next_p, 2)
@@ -195,7 +195,7 @@ class UnoGame:
             skip_next = False             # already advanced
             self.next_turn()
             return msg
-        elif card.value == "Wild Draw Four":
+        elif card.value == "+4":
             self.next_turn()
             next_p = self.current_player
             self.draw_card(next_p, 4)
