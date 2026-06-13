@@ -23,8 +23,8 @@ TEXT_COLORS = {
     "Blue": "white", "Yellow": "#1a1a1a", "Wild": "white",
 }
 VALUES = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-          "Skip", "Reverse", "Draw Two"]
-WILD_CARDS = ["Wild", "Wild Draw Four"]
+          "Skip", "Reverse", "+2"]
+WILD_CARDS = ["Wild", "+4"]
 
 
 # ─────────────────────────────────────────
